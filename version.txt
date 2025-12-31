@@ -1,6 +1,1 @@
-{
-    "SoftwareVersion": "1.0.0",
-    "SoftwareUrl":"",
-    "Status":"True",
-    "Changelog":"[+] added blank"
-}
+1.0.0
