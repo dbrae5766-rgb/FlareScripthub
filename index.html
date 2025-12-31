@@ -369,16 +369,27 @@
             const card = document.createElement('div');
             card.className = 'script-card';
             
-            const imageUrl = script.game?.imageUrl || script.image || 'https://via.placeholder.com/280x180/1a1f2d/666666?text=No+Image';
+            // Determine if it's a universal script
+            const isUniversal = !script.game || !script.game.imageUrl;
             const gameName = script.game?.name || 'Universal';
-            const gameIcon = script.game?.imageUrl || 'https://via.placeholder.com/36/28313d/666666?text=?';
+            
+            // Use script image if available, otherwise use a consistent placeholder
+            let imageUrl = 'https://via.placeholder.com/280x180/1a1f2d/666666?text=Universal';
+            let gameIcon = 'https://via.placeholder.com/36/28313d/666666?text=U';
+            
+            if (!isUniversal && script.game.imageUrl) {
+                imageUrl = script.game.imageUrl;
+                gameIcon = script.game.imageUrl;
+            } else if (script.image) {
+                imageUrl = script.image;
+            }
             
             card.innerHTML = `
-                <img src="${imageUrl}" alt="${script.title}" class="script-image" onerror="this.src='https://via.placeholder.com/280x180/1a1f2d/666666?text=No+Image'">
+                <img src="${imageUrl}" alt="${script.title}" class="script-image" onerror="this.onerror=null; this.src='https://via.placeholder.com/280x180/1a1f2d/666666?text=No+Image';">
                 <div class="script-content">
                     <div class="script-title">${escapeHtml(script.title)}</div>
                     <div class="script-game">
-                        <img src="${gameIcon}" alt="${gameName}" class="game-icon" onerror="this.src='https://via.placeholder.com/36/28313d/666666?text=?'">
+                        <img src="${gameIcon}" alt="${gameName}" class="game-icon" onerror="this.onerror=null; this.src='https://via.placeholder.com/36/28313d/666666?text=U';">
                         <span class="game-name">${escapeHtml(gameName)}</span>
                     </div>
                     <div class="script-meta">
