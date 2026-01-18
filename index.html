@@ -16,24 +16,25 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: rgb(25, 25, 25);
             color: #d4d4d4;
-            overflow-x: hidden;
-            padding: 40px 20px;
+            overflow: hidden;
+            padding: 10px;
         }
 
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
+            max-width: 100%;
+            height: calc(100vh - 20px);
+            display: flex;
+            flex-direction: column;
         }
 
         .search-section {
-            margin-bottom: 48px;
+            margin-bottom: 10px;
+            flex-shrink: 0;
         }
 
         .search-bar {
             display: flex;
             gap: 0;
-            max-width: 800px;
-            margin: 0 auto;
         }
 
         .search-input {
@@ -42,9 +43,9 @@
             border: 2px solid rgb(45, 50, 60);
             border-right: none;
             border-radius: 8px 0 0 8px;
-            padding: 16px 20px;
+            padding: 8px 12px;
             color: #d4d4d4;
-            font-size: 15px;
+            font-size: 12px;
             font-family: inherit;
             transition: border-color 0.2s;
         }
@@ -62,10 +63,10 @@
             background: #ff6b35;
             color: white;
             border: none;
-            padding: 16px 32px;
+            padding: 8px 16px;
             border-radius: 0 8px 8px 0;
             cursor: pointer;
-            font-size: 15px;
+            font-size: 12px;
             font-weight: 600;
             transition: background 0.2s;
         }
@@ -80,19 +81,19 @@
 
         .loading {
             text-align: center;
-            padding: 80px 20px;
+            padding: 40px 20px;
             color: #969696;
-            font-size: 15px;
+            font-size: 12px;
         }
 
         .spinner {
             border: 3px solid rgb(60, 60, 60);
             border-top: 3px solid #ff6b35;
             border-radius: 50%;
-            width: 48px;
-            height: 48px;
+            width: 30px;
+            height: 30px;
             animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
+            margin: 0 auto 10px;
         }
 
         @keyframes spin {
@@ -102,97 +103,119 @@
 
         .scripts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 5px;
+        }
+
+        .scripts-grid::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .scripts-grid::-webkit-scrollbar-track {
+            background: rgb(25, 25, 25);
+        }
+
+        .scripts-grid::-webkit-scrollbar-thumb {
+            background: #ff6b35;
+            border-radius: 3px;
         }
 
         .script-card {
             background: rgb(30, 35, 45);
-            border-radius: 12px;
+            border-radius: 8px;
             overflow: hidden;
-            transition: all 0.3s;
+            transition: all 0.2s;
             cursor: pointer;
             border: 2px solid transparent;
+            height: fit-content;
         }
 
         .script-card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-3px);
             border-color: rgb(50, 55, 65);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
         }
 
         .script-image {
             width: 100%;
-            height: 180px;
+            height: 90px;
             object-fit: cover;
             background: rgb(20, 25, 35);
         }
 
         .script-content {
-            padding: 16px;
+            padding: 8px;
         }
 
         .script-title {
-            font-size: 16px;
+            font-size: 11px;
             font-weight: 600;
             color: #ffffff;
-            margin-bottom: 12px;
+            margin-bottom: 6px;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
-            min-height: 48px;
+            min-height: 32px;
+            line-height: 1.4;
         }
 
         .script-game {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 16px;
-            padding: 10px;
+            gap: 5px;
+            margin-bottom: 6px;
+            padding: 5px;
             background: rgb(20, 25, 35);
-            border-radius: 8px;
+            border-radius: 4px;
         }
 
         .game-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
             object-fit: cover;
             background: rgb(40, 45, 55);
         }
 
         .game-name {
-            font-size: 14px;
+            font-size: 10px;
             color: #a0a0a0;
             font-weight: 500;
             flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .script-meta {
             display: flex;
-            gap: 12px;
-            margin-bottom: 16px;
-            font-size: 13px;
+            gap: 6px;
+            margin-bottom: 6px;
+            font-size: 9px;
             color: #6e6e6e;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .meta-item {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 3px;
         }
 
         .verified-badge {
             background: #ff6b35;
             color: white;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 11px;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-size: 8px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
 
         .copy-btn {
@@ -200,24 +223,21 @@
             background: #ff6b35;
             color: white;
             border: none;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 6px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 10px;
             font-weight: 600;
             transition: all 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            gap: 4px;
         }
 
         .copy-btn:hover {
             background: #ff8555;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
+            transform: translateY(-1px);
         }
 
         .copy-btn:active {
@@ -230,32 +250,32 @@
 
         .no-results {
             text-align: center;
-            padding: 80px 20px;
+            padding: 40px 20px;
             color: #969696;
         }
 
         .no-results h3 {
-            font-size: 24px;
-            margin-bottom: 12px;
+            font-size: 16px;
+            margin-bottom: 8px;
             color: #d4d4d4;
         }
 
         .pagination {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-top: 48px;
-            padding-bottom: 40px;
+            gap: 6px;
+            margin-top: 10px;
+            flex-shrink: 0;
         }
 
         .page-btn {
             background: rgb(30, 35, 45);
             border: 2px solid rgb(45, 50, 60);
             color: #d4d4d4;
-            padding: 10px 20px;
-            border-radius: 8px;
+            padding: 5px 10px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 11px;
             font-weight: 600;
             transition: all 0.2s;
         }
@@ -281,16 +301,16 @@
     <div class="container">
         <div class="search-section">
             <div class="search-bar">
-                <input type="text" class="search-input" id="searchInput" placeholder='Try "jailbreak"' />
+                <input type="text" class="search-input" id="searchInput" placeholder='Search...' />
                 <button class="search-btn" onclick="searchScripts()">Search</button>
             </div>
         </div>
 
-        <div id="loading" class="loading">
+        <div id="loading" class="loading" style="display: none;">
             <div class="spinner"></div>
             <p>Loading scripts...</p>
         </div>
-        <div id="scriptsGrid" class="scripts-grid" style="display: none;"></div>
+        <div id="scriptsGrid" class="scripts-grid"></div>
         <div id="noResults" class="no-results" style="display: none;">
             <h3>No scripts found</h3>
             <p>Try a different search term</p>
@@ -370,23 +390,29 @@
             card.className = 'script-card';
             
             const gameName = script.game?.name || 'Universal';
-            const imageUrl = script.image;
-            const gameIcon = script.game?.imageUrl || script.image;
+            const imageUrl = script.scriptImage 
+                ? `https://scriptblox.com${script.scriptImage}`
+                : (script.game?.imageUrl 
+                    ? `https://scriptblox.com${script.game.imageUrl}` 
+                    : '');
+            const gameIcon = script.game?.imageUrl 
+                ? `https://scriptblox.com${script.game.imageUrl}` 
+                : '';
             
             card.innerHTML = `
-                <img src="${imageUrl}" alt="${script.title}" class="script-image">
+                <img src="${imageUrl}" alt="${escapeHtml(script.title)}" class="script-image" onerror="this.style.display='none'">
                 <div class="script-content">
                     <div class="script-title">${escapeHtml(script.title)}</div>
                     <div class="script-game">
-                        <img src="${gameIcon}" alt="${gameName}" class="game-icon">
+                        ${gameIcon ? `<img src="${gameIcon}" alt="${gameName}" class="game-icon">` : '<div class="game-icon"></div>'}
                         <span class="game-name">${escapeHtml(gameName)}</span>
                     </div>
                     <div class="script-meta">
-                        ${script.verified ? '<span class="verified-badge">✓ Verified</span>' : ''}
+                        ${script.verified ? '<span class="verified-badge">✓</span>' : ''}
                         <span class="meta-item">👁️ ${formatViews(script.views || 0)}</span>
                     </div>
                     <button class="copy-btn" onclick="copyScript('${script.slug}', event)">
-                        Copy Script
+                        Copy
                     </button>
                 </div>
             `;
@@ -401,7 +427,7 @@
             
             try {
                 button.disabled = true;
-                button.innerHTML = 'Loading...';
+                button.innerHTML = '...';
                 
                 const response = await fetch(`https://scriptblox.com/api/script/${slug}`);
                 const data = await response.json();
@@ -409,7 +435,7 @@
                 await navigator.clipboard.writeText(data.script.script);
                 
                 button.classList.add('copied');
-                button.innerHTML = '✓ Copied!';
+                button.innerHTML = '✓';
                 
                 setTimeout(() => {
                     button.classList.remove('copied');
@@ -419,7 +445,7 @@
                 
             } catch (error) {
                 console.error('Error copying script:', error);
-                button.innerHTML = '❌ Error';
+                button.innerHTML = '❌';
                 setTimeout(() => {
                     button.innerHTML = originalText;
                     button.disabled = false;
@@ -440,19 +466,18 @@
             
             const prevBtn = document.createElement('button');
             prevBtn.className = 'page-btn';
-            prevBtn.textContent = '← Previous';
+            prevBtn.textContent = '←';
             prevBtn.disabled = currentPageNum === 1;
             prevBtn.onclick = () => {
                 if (currentPageNum > 1) {
                     currentPage--;
                     loadScripts();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
             };
             pagination.appendChild(prevBtn);
             
-            const maxButtons = 5;
-            let startPage = Math.max(1, currentPageNum - Math.floor(maxButtons / 2));
+            const maxButtons = 3;
+            let startPage = Math.max(1, currentPageNum - 1);
             let endPage = Math.min(totalPages, startPage + maxButtons - 1);
             
             if (endPage - startPage < maxButtons - 1) {
@@ -466,20 +491,18 @@
                 pageBtn.onclick = () => {
                     currentPage = i;
                     loadScripts();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 };
                 pagination.appendChild(pageBtn);
             }
             
             const nextBtn = document.createElement('button');
             nextBtn.className = 'page-btn';
-            nextBtn.textContent = 'Next →';
+            nextBtn.textContent = '→';
             nextBtn.disabled = currentPageNum === totalPages;
             nextBtn.onclick = () => {
                 if (currentPageNum < totalPages) {
                     currentPage++;
                     loadScripts();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
             };
             pagination.appendChild(nextBtn);
